@@ -2,6 +2,9 @@ import { Post } from "blogkit";
 import { format } from "date-fns";
 import { getPosts } from "./lib/data";
 import { blogkit } from "@/blogkit";
+import Link from "next/link";
+
+export const revalidate = 60;
 
 const links = [
   // {
@@ -34,9 +37,9 @@ export default async function Home() {
       <ul className="flex gap-x-2 list-none p-0">
         {links.map((link) => (
           <li key={link.url} className="p-0">
-            <a href={link.url} target="_blank">
+            <Link href={link.url} target="_blank">
               {link.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -66,12 +69,12 @@ function PostItem({ post }: { post: Post }) {
   return (
     <li className="post-item my-6 list-none pl-0">
       <h3 className="text-2xl font-bold mb-2">
-        <a
+        <Link
           href={`/${post.attributes.slug}`}
           className="hover:underline no-underline cursor-pointer"
         >
           {post.attributes.title}
-        </a>
+        </Link>
       </h3>
 
       {post.attributes.description && (

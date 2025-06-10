@@ -21,7 +21,7 @@ export async function GET() {
         feed.addItem({
           title: item.title,
           link: `${url}/${item.slug}`,
-          // @ts-ignore
+          // @ts-expect-error ignore
           content: parseMarkdown(item.markdown?.parent || ''),
           date: item.date,
           description: item.description,

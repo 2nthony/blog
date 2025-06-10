@@ -1,14 +1,19 @@
 import { getPost } from "@/app/lib/data";
 import { blogkit } from "@/blogkit";
 import { format } from "date-fns";
+import Link from "next/link";
+
+export const revalidate = 60;
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const { attributes } = await getPost({
-    params: { slug: ["posts", params.slug] },
+    params: { slug: ["posts", slug] },
   });
 
   return {
@@ -16,17 +21,23 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
   const { html, attributes } = await getPost({
-    params: { slug: ["posts", params.slug] },
+    params: { slug: ["posts", slug] },
   });
 
   return (
     <main>
       <div className="text-lg my-8 font-semibold">
-        <a href="/" className="no-underline">
+        <Link href="/" className="no-underline">
           {blogkit.config.siteConfig.title}
-        </a>
+        </Link>
       </div>
 
       <h1 className="text-4xl font-extrabold mb-4">{attributes.title}</h1>
