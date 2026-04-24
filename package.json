@@ -9,9 +9,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.2.1",
     "@astrojs/rss": "^4.0.18",
     "@notionhq/client": "^5.20.0",
     "@tailwindcss/typography": "^0.5.19",
@@ -26,6 +28,10 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
-    "@types/prismjs": "^1.26.6"
+    "@types/prismjs": "^1.26.6",
+    "wrangler": "^4.84.1"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
