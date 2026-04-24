@@ -3,6 +3,7 @@ import { get } from "lodash-es";
 import { retriever } from "./retriever";
 import { NotionToMarkdown } from "./notion-to-md";
 import { parseMentionPageToInSitePage } from "./parse-mention-page-to-inside-page";
+// import { env } from "cloudflare:workers";
 
 const notion = new Client({
   auth: import.meta.env.NOTION_TOKEN,
