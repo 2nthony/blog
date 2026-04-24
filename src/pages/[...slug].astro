@@ -1,0 +1,26 @@
+---
+import PostLayout from "../layouts/PostLayout.astro";
+import { getPost, getPostList } from "../lib/notion";
+import { parseMarkdown } from "../lib/marked";
+
+export async function getStaticPaths() {
+  const posts = await getPostList();
+
+  return posts.map((post) => {
+    return {
+      params: {
+        slug: post.attributes.slug,
+      },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+
+const post = await getPost(slug);
+const html = parseMarkdown(post.markdown);
+---
+
+<PostLayout title={post.attributes.title} date={post.attributes.date}>
+  <article class="post-body" set:html={html} />
+</PostLayout>
