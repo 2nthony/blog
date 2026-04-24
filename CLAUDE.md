@@ -16,10 +16,10 @@ Minimal Astro starter with Tailwind CSS v4. This is a personal blog project runn
 ## Commands
 
 ```bash
-bun dev      # Start dev server at localhost:4321
-bun build    # Build production site to ./dist/
-bun preview  # Preview production build locally
-bun astro    # Run Astro CLI (e.g., astro add, astro check)
+bun run dev      # Start dev server at localhost:4321
+bun run build    # Build production site to ./dist/
+bun run preview  # Preview production build locally
+bun run astro    # Run Astro CLI (e.g., astro add, astro check)
 ```
 
 ## Architecture
