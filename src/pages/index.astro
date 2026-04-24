@@ -3,12 +3,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import { getPostList } from "../lib/notion/index";
 import { siteConfig } from "../../site.config.mjs";
+import BaseHead from "../components/BaseHead.astro";
 
 const posts = await getPostList();
 ---
 
 <BaseLayout>
-  <Header slot="header" />
+  <Fragment slot="head">
+    <head>
+      <BaseHead title={siteConfig.title} />
+    </head>
+  </Fragment>
+
+  <Header />
 
   <div>
     <p>{siteConfig.description}</p>
