@@ -1,0 +1,32 @@
+---
+import { siteConfig } from "../../site.config.mjs";
+
+const links = [
+  {
+    name: "GitHub",
+    link: "https://github.com/2nthony",
+  },
+  {
+    name: "X(Twitter)",
+    link: "https://twitter.com/_2nthony",
+  },
+  {
+    name: "RSS",
+    link: "/rss.xml",
+  },
+];
+---
+
+<h1 class="text-4xl font-extrabold">{siteConfig.title}</h1>
+
+<ul class="flex gap-x-2 p-0 list-none">
+  {
+    links.map((link) => (
+      <li class="p-0">
+        <a class="underline" target="_blank" href={link.link}>
+          {link.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>

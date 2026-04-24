@@ -1,26 +1,43 @@
-# Blogkit Notion Starter
+# Astro Starter Kit: Minimal
 
-Starter template for [blogkit](https://github.com/2nthony/blogkit).
+```sh
+npm create astro@latest -- --template minimal
+```
 
-## Getting started
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-### Get notion template
+## 🚀 Project Structure
 
-Duplicate the [template](https://2nthony.notion.site/cd8c60e825274c278e671af80f09f385?v=c8368886a493480b848ab10bb16b9a2b) to your notion.
+Inside of your Astro project, you'll see the following folders and files:
 
-### Get environment variables
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-Follow the [Getting Started](https://developers.notion.com/docs/getting-started#getting-started) to get 2 required **environment variables**:
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-- `NOTION_TOKEN`
-- `NOTION_DATABASE_ID`
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## Configuration
+Any static assets, like images, can be placed in the `public/` directory.
 
-1. Update the site title in `blogkit.config.ts`.
+## 🧞 Commands
 
-## Deploy your own
+All commands are run from the root of the project, from a terminal:
 
-Deploy the blogkit notion starter using Vercel:
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F2nthony%2Fblogkit-notion-starter&env=NOTION_TOKEN,NOTION_DATABASE_ID)
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
