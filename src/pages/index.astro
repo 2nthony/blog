@@ -40,13 +40,13 @@ const { entries } = await getLiveCollection("posts");
             <p class="text-foreground/70 mb-2">
               {entry.data.attributes.description}
             </p>
-            <ul class="flex gap-x-2 list-none pl-0 m-0!">
-              <li class="pl-0">
+            <ul class="flex items-center gap-x-2 list-none pl-0 m-0!">
+              <li class="pl-0 m-0!">
                 <time class="text-foreground/70 text-sm">
                   {entry.data.attributes.date}
                 </time>
               </li>
-              <li class="pl-0">
+              <li class="pl-0 m-0!">
                 <Tags tags={entry.data.attributes.tags} />
               </li>
             </ul>
