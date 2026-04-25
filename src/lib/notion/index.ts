@@ -5,6 +5,16 @@ import { NotionToMarkdown } from "./notion-to-md";
 import { parseMentionPageToInSitePage } from "./parse-mention-page-to-inside-page";
 // import { env } from "cloudflare:workers";
 
+export interface PostListItem {
+  id: string;
+  attributes: {
+    title: string;
+    date?: string;
+    description?: string;
+    slug: string;
+  };
+}
+
 const notion = new Client({
   auth: import.meta.env.NOTION_TOKEN,
   notionVersion: import.meta.env.NOTION_VERSION,
@@ -56,7 +66,7 @@ async function getDataBase() {
   return response?.results;
 }
 
-export async function getPostList() {
+export async function getPostList(): Promise<PostListItem[]> {
   const data = await getDataBase();
   const posts = data.map((p) => {
     const id = p.id;
@@ -84,7 +94,12 @@ export async function getPostList() {
 export async function getPost(slug: string) {
   const posts = await getPostList();
   const post = posts.find((p) => p.attributes.slug === slug);
-  const id = post!.id;
+
+  if (!post) {
+    throw new Error(`no post found: ${slug}`);
+  }
+
+  const id = post.id;
 
   const blocks = await n2m.pageToMarkdown(id);
   const parsedBlocks = blocks.map((block) => {
@@ -98,6 +113,6 @@ export async function getPost(slug: string) {
   return {
     id,
     markdown,
-    attributes: post!.attributes,
+    attributes: post.attributes,
   };
 }

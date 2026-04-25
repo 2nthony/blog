@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
-import { getPostList } from "../lib/notion/index";
 import { siteConfig } from "../../site.config.mjs";
 import BaseHead from "../components/BaseHead.astro";
+import { getLiveCollection } from "astro:content";
 
-const posts = await getPostList();
+const { entries } = await getLiveCollection("posts");
 ---
 
 <BaseLayout>
@@ -26,19 +26,21 @@ const posts = await getPostList();
   <div>
     <ul class="pl-0">
       {
-        posts.map((post) => (
+        entries.map((entry) => (
           <li class="my-6 list-none pl-0">
             <h3 class="text-2xl font-bold mb-2">
               <a
                 class="no-underline hover:underline cursor-pointer"
-                href={post.attributes.slug}
+                href={`/posts/${entry.data.attributes.slug}`}
               >
-                {post.attributes.title}
+                {entry.data.attributes.title}
               </a>
             </h3>
-            <p class="text-foreground/70 mb-2">{post.attributes.description}</p>
+            <p class="text-foreground/70 mb-2">
+              {entry.data.attributes.description}
+            </p>
             <time class="text-foreground/70 text-sm">
-              {post.attributes.date}
+              {entry.data.attributes.date}
             </time>
           </li>
         ))

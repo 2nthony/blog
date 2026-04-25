@@ -1,0 +1,31 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+import { type PostListItem } from "../../lib/notion";
+import { getLiveCollection, getLiveEntry, render } from "astro:content";
+
+const { entries } = await getLiveCollection("posts");
+
+export async function getStaticPaths() {
+  return entries.map((post: PostListItem) => {
+    return {
+      params: {
+        slug: post.attributes.slug,
+      },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+
+const { entry } = await getLiveEntry("posts", slug);
+const { Content } = await render(entry);
+---
+
+<PostLayout
+  title={entry.data.attributes.title}
+  date={entry.data.attributes.date}
+>
+  <article class="post-body">
+    <Content />
+  </article>
+</PostLayout>

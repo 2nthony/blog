@@ -32,7 +32,7 @@ marked.use({
 });
 
 export function parseMarkdown(body: string) {
-  const parsed = marked.parse(body);
+  const parsed = marked.parse(body, { async: false });
 
   return parsed;
 }
