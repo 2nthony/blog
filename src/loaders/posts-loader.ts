@@ -18,6 +18,9 @@ export function postsLoader(): LiveLoader<PostListItem, EntryFilter> {
             return {
               id: post.attributes.slug,
               data: post,
+              cacheHint: {
+                tags: ["posts", post.attributes.slug],
+              },
             };
           }),
         };
@@ -36,6 +39,9 @@ export function postsLoader(): LiveLoader<PostListItem, EntryFilter> {
           data: post,
           rendered: {
             html: parseMarkdown(post.markdown),
+          },
+          cacheHint: {
+            lastModified: new Date(post.updatedAt),
           },
         };
       } catch (error) {
