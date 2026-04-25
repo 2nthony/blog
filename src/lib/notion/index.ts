@@ -7,6 +7,7 @@ import { parseMentionPageToInSitePage } from "./parse-mention-page-to-inside-pag
 
 export interface PostListItem {
   id: string;
+  updatedAt: Date;
   attributes: {
     title: string;
     date?: string;
@@ -71,6 +72,8 @@ export async function getPostList(): Promise<PostListItem[]> {
   const posts = data.map((p) => {
     const id = p.id;
     const properties = (p as any).properties;
+    const updatedAt = retriever(properties.updatedAt);
+    // attributes
     const title = retriever(properties.title);
     const date = retriever(properties.date);
     const slug = retriever(properties.slug);
@@ -85,6 +88,7 @@ export async function getPostList(): Promise<PostListItem[]> {
         description,
         slug,
       },
+      updatedAt,
     };
   });
 
@@ -99,7 +103,7 @@ export async function getPost(slug: string) {
     throw new Error(`no post found: ${slug}`);
   }
 
-  const id = post.id;
+  const { id, updatedAt } = post;
 
   const blocks = await n2m.pageToMarkdown(id);
   const parsedBlocks = blocks.map((block) => {
@@ -112,6 +116,7 @@ export async function getPost(slug: string) {
 
   return {
     id,
+    updatedAt,
     markdown,
     attributes: post.attributes,
   };
