@@ -4,7 +4,7 @@ export const PropertyRetrievers: { [propertyType: string]: string } = {
   date: "date.start",
   title: "title[0].text.content",
   rich_text: "rich_text[0].text.content",
-  updatedAt: "last_edited_time",
+  last_edited_time: "last_edited_time",
 };
 
 export function retriever(property: any) {
