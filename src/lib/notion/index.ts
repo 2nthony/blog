@@ -79,7 +79,6 @@ export async function getPostList(): Promise<PostListItem[]> {
     const date = retriever(properties.date);
     const slug = retriever(properties.slug);
     const tags = retriever(properties.tags);
-    console.log(properties, tags);
 
     /* optional */
     const description = retriever(properties.description) || null;
