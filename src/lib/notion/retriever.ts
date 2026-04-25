@@ -5,6 +5,7 @@ export const PropertyRetrievers: { [propertyType: string]: string } = {
   title: "title[0].text.content",
   rich_text: "rich_text[0].text.content",
   last_edited_time: "last_edited_time",
+  multi_select: "multi_select",
 };
 
 export function retriever(property: any) {

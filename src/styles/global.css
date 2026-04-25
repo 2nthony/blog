@@ -20,3 +20,48 @@
   color: var(--color-foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+  --color-gray: var(--color-slate-500);
+  --color-brown: var(--color-yellow-800);
+  --color-orange: var(--color-orange-500);
+  --color-yellow: var(--color-yellow-500);
+  --color-green: var(--color-green-700);
+  --color-blue: var(--color-sky-500);
+  --color-purple: var(--color-violet-600);
+  --color-pink: var(--color-pink-600);
+  --color-red: var(--color-rose-600);
+}
+
+/* colors begin */
+.bg-default {
+  @apply bg-zinc-300 dark:bg-zinc-500;
+}
+.bg-gray {
+  @apply bg-zinc-300 dark:bg-zinc-500;
+}
+.bg-brown {
+  @apply bg-yellow-400 dark:bg-yellow-700;
+}
+.bg-orange {
+  @apply bg-orange-500 dark:bg-orange-700;
+}
+.bg-yellow {
+  @apply bg-yellow-500 dark:bg-yellow-700;
+}
+.bg-green {
+  @apply bg-green-400 dark:bg-green-900;
+}
+.bg-blue {
+  @apply bg-sky-400 dark:bg-sky-800;
+}
+.bg-purple {
+  @apply bg-violet-400 dark:bg-violet-800;
+}
+.bg-pink {
+  @apply bg-pink-400 dark:bg-pink-700;
+}
+.bg-red {
+  @apply bg-rose-400 dark:bg-rose-700;
+}
+/* colors end */

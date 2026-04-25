@@ -24,6 +24,7 @@ const { Content } = await render(entry);
 <PostLayout
   title={entry.data.attributes.title}
   date={entry.data.attributes.date}
+  attributes={entry.data.attributes}
 >
   <article class="post-body">
     <Content />

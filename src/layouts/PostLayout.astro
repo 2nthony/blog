@@ -1,10 +1,11 @@
 ---
 import { siteConfig } from "../../site.config.mjs";
 import BaseHead from "../components/BaseHead.astro";
+import Tags from "../components/Tags.astro";
 import "../styles/post-body.css";
 import BaseLayout from "./BaseLayout.astro";
 
-const { title, date } = Astro.props;
+const { title, date, attributes } = Astro.props;
 ---
 
 <BaseLayout>
@@ -19,13 +20,23 @@ const { title, date } = Astro.props;
   </div>
 
   {title && <h1 class="text-4xl font-extrabold mb-4">{title}</h1>}
-  {
-    date && (
-      <div>
-        <time class="text-foreground/70">{date}</time>
-      </div>
-    )
-  }
+
+  <ul class="flex items-center gap-x-2 list-none pl-0 m-0!">
+    {
+      attributes?.date && (
+        <li class="pl-0 m-0!">
+          <time class="text-foreground/70">{attributes.date}</time>
+        </li>
+      )
+    }
+    {
+      attributes?.tags && (
+        <li class="pl-0 m-0!">
+          <Tags tags={attributes.tags} />
+        </li>
+      )
+    }
+  </ul>
 
   <slot />
 </BaseLayout>

@@ -13,6 +13,7 @@ export interface PostListItem {
     date?: string;
     description?: string;
     slug: string;
+    tags?: { name: string; color?: string }[];
   };
 }
 
@@ -77,6 +78,9 @@ export async function getPostList(): Promise<PostListItem[]> {
     const title = retriever(properties.title);
     const date = retriever(properties.date);
     const slug = retriever(properties.slug);
+    const tags = retriever(properties.tags);
+    console.log(properties, tags);
+
     /* optional */
     const description = retriever(properties.description) || null;
 
@@ -87,6 +91,7 @@ export async function getPostList(): Promise<PostListItem[]> {
         date,
         description,
         slug,
+        tags,
       },
       updatedAt,
     };

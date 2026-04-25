@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import { siteConfig } from "../../site.config.mjs";
 import BaseHead from "../components/BaseHead.astro";
 import { getLiveCollection } from "astro:content";
+import Tags from "../components/Tags.astro";
 
 const { entries } = await getLiveCollection("posts");
 ---
@@ -39,9 +40,16 @@ const { entries } = await getLiveCollection("posts");
             <p class="text-foreground/70 mb-2">
               {entry.data.attributes.description}
             </p>
-            <time class="text-foreground/70 text-sm">
-              {entry.data.attributes.date}
-            </time>
+            <ul class="flex gap-x-2 list-none pl-0 m-0!">
+              <li class="pl-0">
+                <time class="text-foreground/70 text-sm">
+                  {entry.data.attributes.date}
+                </time>
+              </li>
+              <li class="pl-0">
+                <Tags tags={entry.data.attributes.tags} />
+              </li>
+            </ul>
           </li>
         ))
       }

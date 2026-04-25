@@ -202,30 +202,30 @@ pre.languagetypescript {
 
 /* colors begin */
 .post-body .gray {
-  @apply text-slate-500;
+  color: var(--color-gray);
 }
 .post-body .brown {
-  @apply text-yellow-800;
+  color: var(--color-brown);
 }
 .post-body .orange {
-  @apply text-orange-500;
+  color: var(--color-orange);
 }
 .post-body .yellow {
-  @apply text-yellow-500;
+  color: var(--color-yellow);
 }
 .post-body .green {
-  @apply text-green-700;
+  color: var(--color-green);
 }
 .post-body .blue {
-  @apply text-sky-500;
+  color: var(--color-blue);
 }
 .post-body .purple {
-  @apply text-violet-600;
+  color: var(--color-purple);
 }
 .post-body .pink {
-  @apply text-pink-600;
+  color: var(--color-pink);
 }
 .post-body .red {
-  @apply text-rose-600;
+  color: var(--color-red);
 }
 /* colors end */
