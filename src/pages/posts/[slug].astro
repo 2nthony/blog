@@ -3,13 +3,13 @@ import PostLayout from "../../layouts/PostLayout.astro";
 import { type PostListItem } from "../../lib/notion";
 import { getLiveCollection, getLiveEntry, render } from "astro:content";
 
-const { entries } = await getLiveCollection("posts");
-
 export async function getStaticPaths() {
-  return entries.map((post: PostListItem) => {
+  const { entries } = await getLiveCollection("posts");
+
+  return entries.map((entry: PostListItem) => {
     return {
       params: {
-        slug: post.attributes.slug,
+        slug: entry.id,
       },
     };
   });
